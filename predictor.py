@@ -11,7 +11,7 @@ import numpy as np
 # -----------------------------
 # CONFIG
 PDF_FOLDER = '/home/xmjs_cptc/predictapp/inputdata'
-OUTPUT_FILE = '/home/xmjs_cptc/predictapp/inputdata/predicted_values.txt'
+OUTPUT_FILE = '/home/xmjs_cptc/predictapp/outputdata/predicted_values.txt'
 LOWER_PRIZE_PATTERNS = [r'\b\d{4}\b']  # matches any 4-digit number
 
 # -----------------------------
