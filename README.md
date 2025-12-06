@@ -1,130 +1,109 @@
-predictor_app
+# predictor_app
 
-predictor_app is a lightweight AI-powered number pattern analysis and prediction system.
-It extracts numerical data from PDF files, builds a statistical dataset, trains a machine-learning model, and generates a list of the most probable upcoming 4-digit sequences based on historical patterns.
+A lightweight Streamlit-based application that analyzes historical PDF data, extracts numerical patterns, and generates predicted 4-digit number combinations using statistical and machine learning models.
 
-The system includes:
+---
 
-A Streamlit web interface
+## 📁 Project Structure
 
-A PDF data ingestion pipeline
-
-An automated numerical pattern extractor
-
-A machine-learning prediction engine
-
-A text-file export of predicted results
-
-🚀 Features
-
-Upload multiple PDF files for processing
-
-Automatic extraction of all 4-digit numeric sequences
-
-Dataset generation and storage
-
-Machine learning–based pattern scoring
-
-Prediction of most probable upcoming 4-digit sequences
-
-Save results into a .txt file
-
-Lightweight and suitable for low-resource environments
-
-📂 Project Structure
 predictor_app/
-│── app.py
-│── download.py
-│── predict_core.py
-│── requirements.txt
-│── README.md
-│── inputdata/          # Input PDF files
-│── extracted/          # Extracted CSV dataset
-│── predictions/        # Output prediction files
+│
+├── app.py
+├── download.py
+├── predict.py
+├── requirements.txt
+└── README.md
 
-🛠 Installation
-1. Create a virtual environment
+
+---
+
+## 🚀 Features
+
+- Extracts numbers from all PDF files stored inside a folder.
+- Applies statistical frequency analysis.
+- Applies ML-based models (RandomForest) for prediction.
+- Generates likely 4-digit combinations.
+- Allows predictions through a user-friendly Streamlit UI.
+- Saves generated predictions into text files.
+
+---
+
+## 🔧 Installation
+
+### 1️⃣ Update system
+
+```bash
+sudo apt update && sudo apt upgrade -y
+
+2️⃣ Install Python
+sudo apt install python3 python3-pip python3-venv -y
+
+3️⃣ Create and activate virtual environment
+cd predictor_app
 python3 -m venv venv
 source venv/bin/activate
 
-2. Install dependencies
+4️⃣ Install all dependencies
 pip install -r requirements.txt
 
-▶️ Running the Application (Web UI)
+📥 Downloading Data (PDF Files)
 
-Launch the Streamlit app:
+Use the download.py script to download a PDF by passing the URL as an argument.
 
-streamlit run app.py
-
-
-The web interface will open in your browser at:
-
-http://localhost:8501
-
-📥 Downloading PDF Data
-
-Use the automated downloader:
-
-python3 download.py "<url_here>"
+Example:
+python3 download.py "https://example.com/sample.pdf"
 
 
-All downloaded files will be saved to:
+The file is automatically saved into:
 
 /home/xmjs_cptc/predictapp/inputdata/
 
 
-(You may modify the path in download.py if needed.)
+Filename format:
 
-📊 How It Works
+result_YYYYMMDD_HHMMSS.pdf
 
-Data Extraction:
-The system reads all 4-digit numeric patterns from uploaded PDFs.
+🔮 Running Predictions
 
-Dataset Building:
-Extracted values are combined into a structured dataset.
+To generate predictions (without UI):
 
-Model Training:
-A machine-learning model analyzes numeric distributions and patterns.
+python3 predict.py
 
-Prediction:
-The system generates a list of highly probable 4-digit sequences.
 
-Export:
-Predictions are automatically saved inside:
-
-/home/xmjs_cptc/predictapp/predictions/
-
-📁 Output Format
-
-Predicted numbers are saved as:
+This creates:
 
 predictions.txt
 
+🌐 Running Streamlit Web App
 
-Each line contains a 4-digit number.
+Start the UI:
 
-🧩 Customization
+streamlit run app.py
 
-You can easily modify:
 
-number-length behavior
+Streamlit runs on:
 
-scoring functions
+http://localhost:8501/
 
-ML model type
+🐳 Running With Gunicorn (optional)
 
-input/output file paths
+Streamlit normally runs standalone, but if needed:
 
-UI layout in app.py
+gunicorn app:app
 
-🧧 Notes
 
-This project is optimized for lightweight environments such as VirtualBox Ubuntu.
+(Only useful if wrapping Streamlit inside a custom wrapper endpoint.)
 
-No external APIs are required.
+📌 Notes
 
-All processing is done locally.
+Only place PDF files inside /home/xmjs_cptc/predictapp/inputdata/.
 
-📮 Support
+The system automatically extracts numbers and trains models.
 
-For enhancements, UI improvements, or additional ML features, feel free to request an updated version.
+Generated predictions are deterministic but depend on extracted patterns.
+
+No external APIs are used; everything runs locally.
+
+📄 License
+
+This project is open for personal use, modification, and learning.
