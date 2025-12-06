@@ -1,12 +1,13 @@
 # PDF download and parsing
-requests==2.31.0
-beautifulsoup4==4.12.2
-pdfplumber==0.9.0
-PyPDF2>=2.12.1
+requests
+beautifulsoup4
+lxml
+pypdf
+pdfplumber
 # Data handling
-pandas==2.1.0
-numpy==1.26.0
+pandas
+numpy
 # Machine Learning
 scikit-learn==1.3.2
 xgboost
-light
+joblib
